@@ -73,7 +73,7 @@ class Student
 
     row = DB[:conn].execute(sql,name)[0]
     binding.pry
-    self.create(row[1],row[2])
+    self.new_from_db(row)
   end
 
   def update
