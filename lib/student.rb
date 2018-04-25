@@ -63,7 +63,7 @@ class Student
     student = self.new(row[1],row[2])
     student.save
     student
-    binding.pry
+    # binding.pry
 
   end
 
