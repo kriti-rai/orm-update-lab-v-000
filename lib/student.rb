@@ -1,4 +1,3 @@
-require 'pry'
 require_relative "../config/environment.rb"
 
 class Student
@@ -69,8 +68,5 @@ class Student
     row = DB[:conn].execute(sql,name)[0]
     self.new_from_db(row)
   end
-
-  # def update
-  # end
 
 end
