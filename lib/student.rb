@@ -59,7 +59,7 @@ class Student
     sql = <<-SQL
       SELECT * FROM students
       SQL
-      DB[:conn].execute(sql.map do |row|
+      DB[:conn].execute(sql).map do |row|
         self.create(row[1],row[2])
       end.first
   end
@@ -72,4 +72,5 @@ class Student
         self.new_from_db(row)
       end.first
   end
+
 end
