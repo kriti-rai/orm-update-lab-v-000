@@ -72,6 +72,7 @@ class Student
     SQL
 
     row = DB[:conn].execute(sql,name)[0]
+    binding.pry
     self.create(row[1],row[2])
   end
 
