@@ -64,7 +64,7 @@ class Student
     student.save
     student
     binding.pry
-    
+
   end
 
   def self.find_by_name(name)
