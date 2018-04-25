@@ -26,18 +26,23 @@ class Student
     DB[:conn].execute("DROP TABLE students")
   end
 
-  def update
-    sql = <<-SQL
-      UPDATE students
-      SET name = ?, grade = ?
-      WHERE id = ?
-      SQL
-    DB[:conn].execute(sql, self.name, self.grade, self.id)
-  end
+  # def update
+  #   sql = <<-SQL
+  #     UPDATE students
+  #     SET name = ?, grade = ?
+  #     WHERE id = ?
+  #     SQL
+  #   DB[:conn].execute(sql, self.name, self.grade, self.id)
+  # end
 
   def save
     if self.id
-      self.update
+      sql = <<-SQL
+        UPDATE students
+        SET name = ?, grade = ?
+        WHERE id = ?
+        SQL
+      DB[:conn].execute(sql, self.name, self.grade, self.id)
     else
       sql = <<-SQL
         INSERT INTO students (name,grade)
@@ -68,9 +73,7 @@ class Student
     SQL
 
     row = DB[:conn].execute(sql,name)
-    binding.pry
     student = self.new_from_db(row)
-    binding.pry
   end
 
 end
